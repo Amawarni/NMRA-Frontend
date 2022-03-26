@@ -1,0 +1,29 @@
+.card {
+  width: 30%;
+  display: flexbox;
+  flex-direction: column;
+  border: 1 px red solid;
+  align-content: center;
+  margin: 0 auto;
+}
+
+.card-header {
+  height: 30%;
+  background: #5d6770;
+  color: white;
+  text-align: center;
+}
+
+.card-header p {
+  font-size: 40px;
+}
+
+.container {
+  padding: 14px 26px;
+}
+
+body {
+  background-color: hsla(39, 64%, 87%, 0.849);
+
+  padding: 40px;
+}
