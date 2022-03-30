@@ -56,19 +56,21 @@ const AddEdit = () => {
         if (response.status === 200) {
            toast.success(response.data);
            console.log("data =>", response.data);
+           alert("Product updated")
         }
 
     }
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        if (!Registeration_number || Item_code || Product_name || Product_description || Company_name || Company_Adress || VEN_status || Item_category ) {
+        if (!Registeration_number || !Item_code || !Product_name || !Product_description || !Company_name || !Company_Adress || !VEN_status || !Item_category ) {
             toast.error("Please Provide value into each input filed");
         }else {
        if(!id) {
         AddProduct(state);
             } else {
              updateProduct(state, id);
+
              
          }
         }
