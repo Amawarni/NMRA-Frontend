@@ -10,7 +10,7 @@ export default function AddProduct(){
  const [Product_name , setProductName] = useState("");
  const [Product_description  , setProductDescription] = useState("");
  const [Company_name , setCompanyName] = useState("");
- const [Company_adress , setCompanyAdress] = useState("");
+ const [Company_Adress , setCompanyAdress] = useState("");
  const [VEN_status , setVENStatus] = useState("");
  const [Item_category , setItemCategory] = useState("");
 
@@ -24,7 +24,7 @@ export default function AddProduct(){
             Product_name,
             Product_description,
             Company_name,
-            Company_adress,
+            Company_Adress,
             VEN_status,
             Item_category
 

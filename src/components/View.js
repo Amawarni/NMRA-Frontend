@@ -8,6 +8,7 @@ import './View.css';
 
 
 
+
 const  View = () =>  {
     const [product, setProduct] = useState(null);
     const {id} = useParams();
@@ -60,7 +61,7 @@ const  View = () =>  {
                  <br />
                  <br />
                  <strong>Company_adress :</strong>
-                 <span>{product && product.Company_adress}</span>
+                 <span>{product && product.Company_Adress}</span>
                  <br />
                  <br />
                  <strong>VEN_status :</strong>

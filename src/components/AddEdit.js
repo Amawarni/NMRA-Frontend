@@ -4,6 +4,10 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import './AddEdit.css';
 import AddProduct from './pages/AddProducts';
+import {toast } from 'react-toastify';
+import  'react-toastify/dist/ReactToastify.css';
+
+toast.configure();
 
 const initialState = {
     Registeration_number: "",
@@ -11,7 +15,7 @@ const initialState = {
         Product_name: "",
         Product_description: "",
         Company_name: "",
-        Company_address: "",
+        Company_Adress: "",
         VEN_status: "",
         Item_category: ""
 };
@@ -19,7 +23,7 @@ const initialState = {
 const AddEdit = () => {
     const [state, setState] = useState(initialState);
 
-    const{Registeration_number, Item_code, Product_name, Product_description, Company_name, Company_address, VEN_status, Item_category } = state;
+    const{Registeration_number, Item_code, Product_name, Product_description, Company_name, Company_Adress, VEN_status, Item_category } = state;
 
     const history = useHistory();
 
@@ -42,27 +46,30 @@ const AddEdit = () => {
     const AddProduct = async (data) => {
         const response = await axios.post(`http://localhost:8071/product/add`, data);
         if (response.status === 200) {
-           // toast.success(response.data);
+           toast.success(response.data);
+           console.log("data =>", response.data);
         }
 
     }
     const updateProduct = async (data,id) => {
         const response = await axios.put(`http://localhost:8071/product/update/${id}`, data);
         if (response.status === 200) {
-           // toast.success(response.data);
+           toast.success(response.data);
+           console.log("data =>", response.data);
         }
 
     }
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        if (!Registeration_number || Item_code || Product_name || Product_description || Company_name || Company_address || VEN_status || Item_category ) {
-            //toast.error("Please Provide value into each input filed");
+        if (!Registeration_number || Item_code || Product_name || Product_description || Company_name || Company_Adress || VEN_status || Item_category ) {
+            toast.error("Please Provide value into each input filed");
         }else {
        if(!id) {
         AddProduct(state);
             } else {
              updateProduct(state, id);
+             
          }
         }
     };
@@ -72,6 +79,7 @@ const AddEdit = () => {
        setState({...state, [name]: value})
     };
 
+    console.log(state);
     return (
         <div style={{ marginTop: "100px "}}>
             <form 
@@ -124,13 +132,13 @@ const AddEdit = () => {
                 onChange={handleInputChange}
                 value={Company_name}
                 />
-                <label htmlFor="Company_address ">Company address </label>
+                <label htmlFor="Company_Adress ">Company address </label>
                 <input type= "text"
-                id = "Company_address"
-                name= "Company_address"
+                id = "Company_Adress"
+                name= "Company_Adress"
                 placeholder= " Enter Company address"
                 onChange={handleInputChange}
-                value={Company_address}
+                value={Company_Adress}
                 />
                 
                 <label htmlFor="VEN_status ">VEN status </label>
@@ -149,7 +157,7 @@ const AddEdit = () => {
                 onChange={handleInputChange}
                 value={Item_category}
                 />
-                <input type="submit" value= {id ? "update" : "Add"} />
+                <input type="submit" value= {id ? `update` : `Add`} />
             </form>
            
         </div>
